@@ -57,7 +57,7 @@ rm -f "$API_SOCKET"
 
 ./firecracker --api-sock "$API_SOCKET" --context '{"id": "fc-'${SB_ID}'", "jailed": false, "seccomp_level": 0, "start_time_us": 0, "start_time_cpu_us": 0}' &
 
-sleep 0.015s
+#sleep 0.015s
 
 # Wait for API server to start
 while [ ! -e "$API_SOCKET" ]; do

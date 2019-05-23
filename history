@@ -1,0 +1,10 @@
+ 2040  chmod 400 xenial.rootfs.id_rsa
+ 2041  chmod u+x firecracker
+----
+ 2049  sudo ./scripts/setup-tap-with-id.sh 42
+ 2053  ./start-firecracker.sh 42
+----
+ 2055  ID="42"
+ 2056  ifconfig fc-$ID-tap0 | grep "inet "
+ 2060  ifconfig fc-42-tap0 | grep inet
+ 2061  ssh -i xenial.rootfs.id_rsa root@169.254.0.169

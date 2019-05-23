@@ -53,9 +53,8 @@ FC_MAC="$(printf '02:FC:00:00:%02X:%02X' $((SB_ID / 256)) $((SB_ID % 256)))"
 #ip addr add "${TAP_IP}${MASK_SHORT}" dev "$TAP_DEV"
 #ip link set dev "$TAP_DEV" up
 
-#KERNEL_BOOT_ARGS="${KERNEL_BOOT_ARGS} ip=${FC_IP}::${TAP_IP}:${MASK_LONG}::eth0:off"
-#KERNEL_BOOT_ARGS="--ip=eth0,${FC_IP},${MASK_LONG} --defaultgw=${TAP_IP} --nopci /iperf3 -n 10M -c ${TAP_IP}"
-KERNEL_BOOT_ARGS="--ip=eth0,${FC_IP},${MASK_LONG} --defaultgw=${TAP_IP} --nopci /iperf3 -c ${TAP_IP} -t 1"
+KERNEL_BOOT_ARGS="--ip=eth0,${FC_IP},${MASK_LONG} --defaultgw=${TAP_IP} --nopci /iperf3 -c ${TAP_IP} -n 100M"
+#KERNEL_BOOT_ARGS="--ip=eth0,${FC_IP},${MASK_LONG} --defaultgw=${TAP_IP} --nopci /iperf3 -c ${TAP_IP} -t 1"
 
 # Start Firecracker API server
 rm -f "$API_SOCKET"
